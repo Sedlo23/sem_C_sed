@@ -1,8 +1,11 @@
 #!/bin/bash
 
-param1=$1
-param2=$2
+
+param2=$1
 currentDate=`date`
+latest=$(git describe --abbrev=0)
+add1=0.1
+param1="$latest + $add1"
 
 git tag -a $param1 -m "$currentDate"
 git add .
