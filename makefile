@@ -18,22 +18,29 @@ LINUX =.o
 
 WIN =.exe
 
-objects = $(DIR_SRC)/$(DIR_BASE)/main.c $(DIR_SRC)/$(DIR_STRU)/list.o
+CMD_INPUT=""
+
+FLAGS = -std=c99 -I $(DIR_SRC)/$(DIR_STRU)
+
+main =  $(DIR_SRC)/$(DIR_BASE)/main.c
+list = $(DIR_SRC)/$(DIR_STRU)/list.c
+fce = $(DIR_SRC)/$(DIR_BASE)/fce.c
+
 
 
 
 debug_linux: 
-	$(CC) $(objects) -o $(OUTDIR)/$(OUTPUT)$(LINUX)
+	$(CC) $(FLAGS) $(main) $(list) $(fce) -o $(OUTDIR)/$(OUTPUT)$(LINUX) -lm
 
 debug_win: 
-	$(CC) $(objects) -o $(OUTDIR)/$(OUTPUT)$(WIN)
+	$(CC) $(FLAGS) $(main) $(list) (fce)  -o $(OUTDIR)/$(OUTPUT)$(WIN) -lm
 	
 run_linux: 
-	$(OUTDIR)/$(OUTPUT)$(LINUX)
+	$(OUTDIR)/$(OUTPUT)$(LINUX) $(CMD_INPUT)
 	
 leak: debug_linux
 	valgrind --tool=memcheck $(OUTDIR)/$(OUTPUT)$(LINUX)
 
-	
+linux: debug_linux run_linux 
 
 
