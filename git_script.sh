@@ -23,4 +23,8 @@ git commit -m "$param2"
 git push
 git push origin $param1
 
+if ($param3==$param4)
+then
+	git tag -a $param1 -m "$currentDate"
 git fetch --tags
+fi
