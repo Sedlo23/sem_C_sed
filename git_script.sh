@@ -11,7 +11,7 @@ latest=$(git describe --abbrev=0)
 param1=$(echo "$latest+0.1" | bc) 
 
 
-if [ $param3 == $param4 ]
+if [ $param3 != $param4 ]
 then
 	git tag -a $param1 -m "$currentDate"
 fi
@@ -23,8 +23,7 @@ git commit -m "$param2"
 git push
 git push origin main
 
-if [ $param3 == $param4 ]
+if [ $param3 != $param4 ]
 then
-	git tag -a $param1 -m "$currentDate"
-git fetch --tags
+	git fetch --tags
 fi
