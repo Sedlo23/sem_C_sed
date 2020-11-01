@@ -21,7 +21,7 @@ fi
 git add .
 git commit -m "$param2"
 git push
-git push origin $param1
+git push origin main
 
 if [ $param3 == $param4 ]
 then
