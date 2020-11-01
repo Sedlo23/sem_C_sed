@@ -18,13 +18,15 @@ LINUX =.o
 
 WIN =.exe
 
+objects = $(DIR_SRC)/$(DIR_BASE)/main.c $(DIR_SRC)/$(DIR_STRU)/list.o
 
 
-debug_linux: $(DIR_SRC)/$(DIR_BASE)/main.c   
-	$(CC) $(DIR_SRC)/$(DIR_BASE)/main.c -o $(OUTDIR)/$(OUTPUT)$(LINUX)
 
-debug_win: $(DIR_SRC)/$(DIR_BASE)/main.c   
-	$(CC) $(DIR_SRC)/$(DIR_BASE)/main.c -o $(OUTDIR)/$(OUTPUT)$(WIN)
+debug_linux: 
+	$(CC) $(objects) -o $(OUTDIR)/$(OUTPUT)$(LINUX)
+
+debug_win: 
+	$(CC) $(objects) -o $(OUTDIR)/$(OUTPUT)$(WIN)
 	
 run_linux: 
 	$(OUTDIR)/$(OUTPUT)$(LINUX)
